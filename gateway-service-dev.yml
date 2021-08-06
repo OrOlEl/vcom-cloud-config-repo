@@ -1,0 +1,79 @@
+token:
+  expiration_accessToken_time: 86400000
+  expiration_refreshToken_time: 1209600000
+  secret: '{cipher}AQAZxJvbr62UH5QR8Rk1jzI2RyfWaCw4JVSqe9wZgAnJsg/OQzcgFTbqqfXJLn1PI6XElud1UvIodoytFoU4vTtahsy/NLst6x67AqeMX701lmEGo0BL5ZVPC+q2Uzm3+OaUr8/Ke+OzPk4P0WlGGdgNUqqHLxhMxNQlLVrUPIOKj7H02bmG43Yn7/ZIm2NOYHE9GZjp6J8nduHkn9o7NjYGwOo/ESMNAYL68hCy5ElpDIXGl5SyoJEiLD/Wshie3a64yv6qZ1C95Ko0781WQTHzd+bF8g8Lq1K2Pw4jE8eDUyur5vn9y9mK9rmvs4vvQu4u/sZa8wxdUbt5TurHjcD0OKDk9efnUiRTvTmeVMEPXGoeSnzERx4g8dnBIoPDDK6ZBMpk0Djw1B7tsSI5AqAiYMi9eD6Cp1kx87Zf+31Ekk0PPNh2+T2ePPnQXQu71U31kyv0o3eezruxsGql1/gJqyrLzlXIG9ayBV5g593M5w=='
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway Global Filter
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: member-service
+          uri: lb://MEMBER-SERVICE
+          predicates:
+            - Path=/member-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/member-service/(?<segment>.*), /$\{segment}
+        - id: member-service
+          uri: lb://MEMBER-SERVICE
+          predicates:
+            - Path=/member-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/member-service/(?<segment>.*), /$\{segment}
+        - id: member-service
+          uri: lb://MEMBER-SERVICE
+          predicates:
+            - Path=/member-service/members
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/member-service/(?<segment>.*), /$\{segment}
+        - id: member-service
+          uri: lb://MEMBER-SERVICE
+          predicates:
+            - Path=/member-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/member-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/catalog-service/(?<segment>.*), /$\{segment}
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+        - id: apt-service
+          uri: lb://APT-SERVICE
+          predicates:
+            - Path=/apt-service/**
+          filters:
+            - name: CustomFilter
+            - name: LoggingFilter
+              args:
+                baseMessage: Spring Cloud Gateway Logging Filter
+                preLogger: true
+                postLogger: true
+
+
+gateway:
+  ip: 127.0.0.1

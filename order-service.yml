@@ -1,0 +1,19 @@
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    password: '{cipher}AQArG0WMk+Amw57yGnF21fx8Ig363OZZeRWSJvwih0h9RXiSDu5cBn8Ql5+uTW6a7epmPatRt8WZmmRQnSWpY8YKUfYA9uXJ5RhQIB3+LhUnc14llQgxALn4lAyPqgY1bCP9ekjnmsWyBkt3rbyYRq1zUBvE1A3GloXkKq4tYIN4OXd9iTFM3zzbC8HyiitUivTKG14VAweWKgPndSczgkus+qTMK5qDbKaWa3Fh5WqleiU6nwSuLMuYOPSOCpIwn022sIA1C/P8k3dYhgbd/q+4fawQPj2uyLZX6mS3PI/y3EFVHMuBUczdJOA7HpsX1jFmqwYf89V4SX0jL8foqmQC/wYxuH+z37Jn+0Cxj78mDNS+Idl9TrGDdzSdPBM1sRg='
+#    url: jdbc:mysql://localhost:3306/msa-user?characterEncoding=UTF-8&serverTimezone=UTC
+#    username: root
+spring:
+  cloud:
+    config:
+      allow-override: true
+      override-none: true
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    password: '{cipher}AQArG0WMk+Amw57yGnF21fx8Ig363OZZeRWSJvwih0h9RXiSDu5cBn8Ql5+uTW6a7epmPatRt8WZmmRQnSWpY8YKUfYA9uXJ5RhQIB3+LhUnc14llQgxALn4lAyPqgY1bCP9ekjnmsWyBkt3rbyYRq1zUBvE1A3GloXkKq4tYIN4OXd9iTFM3zzbC8HyiitUivTKG14VAweWKgPndSczgkus+qTMK5qDbKaWa3Fh5WqleiU6nwSuLMuYOPSOCpIwn022sIA1C/P8k3dYhgbd/q+4fawQPj2uyLZX6mS3PI/y3EFVHMuBUczdJOA7HpsX1jFmqwYf89V4SX0jL8foqmQC/wYxuH+z37Jn+0Cxj78mDNS+Idl9TrGDdzSdPBM1sRg='
+    url: jdbc:mariadb://local host:3306/msa-user
+    username: root
+
+gateway:
+  ip: 172.18.0.9

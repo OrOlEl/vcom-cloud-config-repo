@@ -1,0 +1,19 @@
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    password: '{cipher}AQAMgqMfj1finDeqcNX7jwWhudHbUrbR5+n1pwkIoDbfPAZdIqyXDqKYkT3zFI3nVcVX00RJFfOZi9q53aAuZkn7Hp5AhqWAv7vQyzeBipgQ1lm1sBQutz+RCti87gv7+TOhi0hZtG7oJ/dxtlz7tlUVILL4mj9xdsADf69q4Lh5xCdMoWB6PPTf0lGkxMgz3yZQX0+9f5DZ+M80wiNGkGDvhatSvADsV5ImekFhX1xMbP66fJkZmLkiyyApyxsrxUtvD8oj531asvsYVAvxAxWxe59yZ05F3f486bcuMxW7OJcAHyny4sau8Tx2coeSVY5djrLSqOyZPzBid2XK2jSI+wWsWRkef4ycVuqgTgr2XqbswFS9Hqil842TTkQwQs4='
+#    url: jdbc:mysql://vcomsmb20.iptime.org:18306/msa-user?characterEncoding=UTF-8&serverTimezone=UTC
+#    username: unismb
+spring:
+  cloud:
+    config:
+      allow-override: true
+      override-none: true
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    password: '{cipher}AQArG0WMk+Amw57yGnF21fx8Ig363OZZeRWSJvwih0h9RXiSDu5cBn8Ql5+uTW6a7epmPatRt8WZmmRQnSWpY8YKUfYA9uXJ5RhQIB3+LhUnc14llQgxALn4lAyPqgY1bCP9ekjnmsWyBkt3rbyYRq1zUBvE1A3GloXkKq4tYIN4OXd9iTFM3zzbC8HyiitUivTKG14VAweWKgPndSczgkus+qTMK5qDbKaWa3Fh5WqleiU6nwSuLMuYOPSOCpIwn022sIA1C/P8k3dYhgbd/q+4fawQPj2uyLZX6mS3PI/y3EFVHMuBUczdJOA7HpsX1jFmqwYf89V4SX0jL8foqmQC/wYxuH+z37Jn+0Cxj78mDNS+Idl9TrGDdzSdPBM1sRg='
+    url: jdbc:mariadb://localhost:3306/msa-user
+    username: root
+
+gateway:
+  ip: 127.0.0.1

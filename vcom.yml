@@ -1,0 +1,16 @@
+token:
+  expiration_accessToken_time: 86400000
+  expiration_refreshToken_time: 1209600000
+  secret: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ3AMIIBCgKCAQEA0m59l2u5iDnMbrXHfqkO
+    rn2dVQ3vfBJqcDuFUK03d+2PZGbVlNCqnkpIJ8syFppW8ljnWweP7+LiWpRoz0I7
+    fYb3d6TjhV86Y997Fl4DBrxgM6KTJOuE/uxnoDhZQ16LgOU2ckXjOzOdTsnGMKQB
+    LCl0vpcXBtFLMaSbpv1ozi4h7DJyVZ6EnFQZUWGdgTMhDrmqevfx95U/16c7WBDO
+    kqwIn7Glry1n9Suxygbf3g5AzpWcusZgDLIIZ7JTUldBb8qU2a0Dl4mvLZOn7wPo
+    jfj7Cw2QICsc2+Pwf21fP+hzf+1WSRHbnYv8uanRO0gZ8ekGaghM/1H6gqJbo2nI
+    JwIDAQAB
+    -----END PUBLIC KEY-----
+
+gateway:
+  ip: 192.168.0.18
