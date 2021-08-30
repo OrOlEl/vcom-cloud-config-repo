@@ -5,3 +5,114 @@ token:
 
 gateway:
   ip: 127.0.0.1
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway Global Filter
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: web-service
+          uri: lb://WEB-SERVICE
+          predicates:
+            - Path=/web-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/web-service/(?<segment>.*), /$\{segment}
+        - id: web-service
+          uri: lb://WEB-SERVICE
+          predicates:
+            - Path=/web-service/createWebUser
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/web-service/(?<segment>.*), /$\{segment}
+        - id: web-service
+          uri: lb://WEB-SERVICE
+          predicates:
+            - Path=/web-service/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/web-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: web-service
+          uri: lb://WEB-SERVICE
+          predicates:
+            - Path=/web-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/web-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: web-service
+          uri: lb://WEB-SERVICE
+          predicates:
+            - Path=/web-service/security/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/web-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: ctrl-service
+          uri: lb://CTRL-SERVICE
+          predicates:
+            - Path=/ctrl-service/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/ctrl-service/(?<segment>.*), /$\{segment}
+        - id: box-service
+          uri: lb://BOX-SERVICE
+          predicates:
+            - Path=/box-service/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/box-service/(?<segment>.*), /$\{segment}
+        - id: apt-service
+          uri: lb://APT-SERVICE
+          predicates:
+            - Path=/apt-service/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/apt-service/(?<segment>.*), /$\{segment}
